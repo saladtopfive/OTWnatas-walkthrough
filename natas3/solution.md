@@ -27,17 +27,19 @@ we go to that file. By adding /robots.txt at the end of the url:
 ```
 http://natas3.natas.labs.overthewire.org/robots.txt
 ```
-following this link we can see some text that states
----
-User-agent: *
-Disallow: /s3cr3t/
----
-this is basically talling the crawlers to not go to /s3cr3t/. Thats exactly where we will
+
+Following this link we can see some text that states:
+
+> User-agent: *
+> Disallow: /s3cr3t/
+
+This is basically talling the crawlers to not go to /s3cr3t/. Thats exactly where we will
 go.
+
 ```
 http://natas3.natas.labs.overthewire.org/s3cr3t/
 ```
-there we can see again, users.txt, after opening it we see that it contains the password
+There we can see again, users.txt, after opening it we see that it contains the password
 for natas4.
 
 
