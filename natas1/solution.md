@@ -13,8 +13,9 @@ http://natas0.natas.labs.overthewire.org/
 http://natas1.natas.labs.overthewire.org/
 ```
 The inspector tab will stay open, then just repeat instruction from natas0.
+---
 
-
-Alternatively, you can use the shortcut for opening the web inspector:
-
+###Alternatively
+You can use the shortcut for opening the web inspector:
 > ctrl+shift+c 
+

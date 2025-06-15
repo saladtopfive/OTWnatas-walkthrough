@@ -1,7 +1,9 @@
 # Natas2 walkthrough
 
 When inspecting this page you can find a message that states:
-> "There is nothing on this page"
+> "There is nothing on this page" 
+
+---
 Which is true but have a look at whats below:
 
 ```
