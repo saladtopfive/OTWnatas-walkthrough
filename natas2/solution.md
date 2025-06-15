@@ -7,7 +7,7 @@ on this page", which is true but have a look at whats below that:
 <img src="files/pixel.png">
 ```
 
-That line indicates that there is a folder on this website, so naturally we inspect.
+That line indicates that there is a folder called "files" on this website, so naturally we inspect.
 By going to:
 
 ```
