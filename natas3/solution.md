@@ -3,12 +3,12 @@
 Okay, this is a weird one if you've never heard of it before. So here's a little bit of
 insight: 
 
-There are so-called **web crawlers** all over the internet. They're basically bots that
+There are so-called ***web crawlers*** all over the internet. They're basically bots that
 browse the web to build indexes of it. So that when you search something like:
 
 > "femboy feet" 😳
 
-...the search engine knows **exactly** which sites will suit you best.
+...the search engine knows ***exactly*** which sites will suit you best.
 
 ---
 
