@@ -92,3 +92,4 @@ curl 'http://natas4.natas.labs.overthewire.org/index.php' \
 ```
 
 The output should grant you the password to natas5.
+>Make sure to save these passwords somewhere, it ensures that you can come back after a longer break :)
