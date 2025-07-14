@@ -1,64 +1,71 @@
-# Natas 4 walkthrough 
+# 🔐 Natas 4 Walkthrough
 
-To complete this one we will need to understand referal links. Bascially its a link that 
-the website can be accesed from, and only from that link. This partilucar website needs
-a link which we dont have the access to, the ***natas5 login.*** After refreshing the 
-page this information is shown:
-
->Access disallowed. You are visiting form ...natas4... while authorized users should come only from ...natas5...
-
-Thats where we need to investigate.
+To complete **Natas 4** of the OverTheWire wargames, we need to understand how **HTTP Referers** work.  
+This particular level restricts access based on the `Referer` header — it must appear as though we're coming from **natas5**, even though we don't have direct access to that level yet.
 
 ---
 
-## How to we change the refferal link?
+## 🧠 The Clue
 
-There are many different options to change the refferal link. I will be using the terminal
-way. Firstly, we need to actually find the refferal link.
+When you visit the site and refresh the page, you'll see:
 
-1. Inspect the page. 
-2. Navigate to the network tab.
-3. Refresh the page.
+> **Access disallowed. You are visiting from ...natas4... while authorized users should come only from ...natas5...**
 
-By now you should see the `index.php` file. When clicking it, you can see the referal link.
-Now, right clicking on this file select the ***copy value -> copy as cURL***. You should
-have something like:
-` curl 'http://natas4.natas.labs.overthewire.org/index.php' \
-  --compressed \
-  -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:139.0) Gecko/20100101 Firefox/139.0' \
-  -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
-  -H 'Accept-Language: en,pl;q=0.7,en-US;q=0.3' \
-  -H 'Accept-Encoding: gzip, deflate' \
-  -H 'Referer: http://natas4.natas.labs.overthewire.org/index.php' \
-  -H 'Authorization: Basic bmF0YXM0OlFyeVpYYzJlMHphaFVMZEhydEh4enlZa2o1OWtVeExR' \
-  -H 'Connection: keep-alive' \
-  -H 'Upgrade-Insecure-Requests: 1' \
-  -H 'DNT: 1' \
-  -H 'Sec-GPC: 1' \
-  -H 'Priority: u=0, i' `
+This means our current request is coming from the wrong source (natas4), and we need to spoof or change the `Referer` to make it seem like we’re coming from **natas5**.
 
-When pasted into the terminal, you get the message that you are trying to access from 
-natas4, but it is only allowed to access from natas5. So naturally, we change the cURL from:
+---
 
-`
-curl 'http://natas4.natas.labs.overthewire.org/index.php' \
-  --compressed \
-  -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:139.0) Gecko/20100101 Firefox/139.0' \
-  -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
-  -H 'Accept-Language: en,pl;q=0.7,en-US;q=0.3' \
-  -H 'Accept-Encoding: gzip, deflate' \
-  -H 'Referer: http://natas4.natas.labs.overthewire.org/index.php' \
-  -H 'Authorization: Basic bmF0YXM0OlFyeVpYYzJlMHphaFVMZEhydEh4enlZa2o1OWtVeExR' \
-  -H 'Connection: keep-alive' \
-  -H 'Upgrade-Insecure-Requests: 1' \
-  -H 'DNT: 1' \
-  -H 'Sec-GPC: 1' \
-  -H 'Priority: u=0, i'
-`
+## 🛠️  Step-by-Step: Modifying the Referer with `curl`
 
-to:
+We'll solve this using `curl` in the terminal by customizing the HTTP headers.
 
-`
+### 1. Open Developer Tools
+
+In your browser:
+
+- Press `F12` or right-click → **Inspect**
+- Go to the **Network** tab
+- Refresh the page
+
+You’ll see a request to `index.php`.
+
+---
+
+### 2. Copy the Request as `curl`
+
+Right-click the `index.php` request and choose:
+
+> **Copy → Copy as cURL**
+
+You’ll get something like:
+
+```bash
+curl 'http://natas4.natas.labs.overthewire.org/index.php'   --compressed   -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:139.0) Gecko/20100101 Firefox/139.0'   -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'   -H 'Accept-Language: en,pl;q=0.7,en-US;q=0.3'   -H 'Accept-Encoding: gzip, deflate'   -H 'Referer: http://natas4.natas.labs.overthewire.org/index.php'   -H 'Authorization: Basic bmF0YXM0OlFyeVpYYzJlMHphaFVMZEhydEh4enlZa2o1OWtVeExR'   -H 'Connection: keep-alive'   -H 'Upgrade-Insecure-Requests: 1'   -H 'DNT: 1'   -H 'Sec-GPC: 1'   -H 'Priority: u=0, i'
+```
+---
+
+### 3. Change the Referer to point to natas5
+
+All you have to do is modify the Referer header. Change:
+
+```bash
+-H 'Referer: http://natas4.natas.labs.overthewire.org/index.php'
+```
+To:
+
+```bash
+-H 'Referer: http://natas5.natas.labs.overthewire.org'
+```
+
+>Be sure to remove /index.php - it must be the root path of natas5.
+
+---
+
+### 4. Final command
+
+Here's the full, working command:
+
+```bash
 curl 'http://natas4.natas.labs.overthewire.org/index.php' \
   --compressed \
   -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:139.0) Gecko/20100101 Firefox/139.0' \
@@ -70,9 +77,7 @@ curl 'http://natas4.natas.labs.overthewire.org/index.php' \
   -H 'Connection: keep-alive' \
   -H 'Upgrade-Insecure-Requests: 1' \
   -H 'DNT: 1' \
-  -H 'Sec-GPC: 1' \
-  -H 'Priority: u=0, i'
-`
+  -H 'Sec-GPC: 1'
+```
 
-***Notice we changed the "referer" to natas5 AND deleted the /index.php***
-After pasting that changed command into the terminal, you should be granted access.
+The output should grant you the password to natas5.
