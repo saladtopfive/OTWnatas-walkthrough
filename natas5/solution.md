@@ -2,7 +2,7 @@
 
 When logging in with natas5 and the provided password, we are shown the message: 
 
-> [!INFO]
+> [!TIP]
 >***You're not logged in.*** 
 
 Naturally, we inspect the browser's Developer Tools, and we notice that this website uses HTTP, a stateless protocol. This means the server doesn't maintain any persistent session information between requests. To manage user sessions, websites often rely on the browser to store session-related data in the form of cookies.
