@@ -18,7 +18,7 @@ plain text on this site.***
 
 ## 🧠 How do we change authentication cookies?
 
-Inspect the website and navigate to the storage tab -> cookies. Clicking the website link
+Inspect the website and navigate to the ***storage -> cookies.*** Clicking the website link
 in said tab you'll see the:
 
 ```loggedIn = 0```
