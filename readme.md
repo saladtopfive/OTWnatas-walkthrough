@@ -44,5 +44,6 @@ If you're new to Natas:
 3. Clone this repo to explore the write-ups locally:
 
 ```bash
-git clone https://github.com/yourusername/NatasWalkthrough.git
-cd NatasWalkthrough
+git clone https://github.com/saladtopfive/OTWnatas-walkthrough.git
+cd OTWnatas-walkthrough
+
