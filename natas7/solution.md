@@ -23,9 +23,7 @@ Naturally we try to paste that in the url:
 
 The output however isnt what we would want. We receive an error:
 
-```Warning: include(about/etc/natas_webpass/natas8): failed to open stream: No such file or directory in /var/www/natas/natas7/index.php on line 21
-
-Warning: include(): Failed opening 'about/etc/natas_webpass/natas8' for inclusion (include_path='.:/usr/share/php') in /var/www/natas/natas7/index.php on line 21```
+`Warning: include(about/etc/natas_webpass/natas8): failed to open stream: No such file or directory in /var/www/natas/natas7/index.php on line 21 Warning: include(): Failed opening 'about/etc/natas_webpass/natas8' for inclusion (include_path='.:/usr/share/php') in /var/www/natas/natas7/index.php on line 21`
 
 Why? Because the server is interpreting `page=about/etc/natas_webpass/natas8`, meaning it's looking inside the `about/` folder — which doesn't exist or doesn't contain our target file.
 
