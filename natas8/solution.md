@@ -32,12 +32,19 @@ actions. To do that we can use many different tools. I recommend we use:
 - The bash terminal (for reversing the string and decoding base64)
 - [CyberChef](https://gchq.github.io/CyberChef/) (a github project hosted on a github.io server for reversing bin2hex)
 
-## The steps to take 
+## ❗ The steps to take 
 
 1. Get the encoded password `$encodedSecret = "3d3d516343746d4d6d6c315669563362";`
-2. Paste the string into the CyberChef ***From Hex***, this gives us the raw text back. Now = `==QcCtmMml1ViV3b`.
-3. Paste the converted back raw text to your bash and run a reversestring command such as: `echo ==QcCtmMml1ViV3b | rev`.
-4. Paste the converted+reversed data into your bash again and run a base64 decode command: `echo b3ViV1lmMmtCcQ== | base64 --decode`.
+2. Paste the string into the CyberChef ***From Hex*** tab, this gives us the raw text back.
+Now `==QcCtmMml1ViV3b`
+3. Paste the converted back raw text to your bash and run a reversestring command such as: 
+```
+echo ==QcCtmMml1ViV3b | rev
+```
+4. Paste the converted+reversed data into your bash again and run a base64 decode command:
+```
+echo b3ViV1lmMmtCcQ== | base64 --decode
+```
 5. That will give you the ***secret***. Which you need to input in the main website. 
 
 Correctly following these steps will grant you access into natas9.
