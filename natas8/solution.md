@@ -3,14 +3,15 @@
 Again we face an input window and a ***View sourcecode*** link. So naturally we check 
 it out. This takes us to the ***php*** script which we need to understand. The first 
 thing that should catch our eyes is the variable named:
-```
+
+```php
 $encodedSecret = "3d3d516343746d4d6d6c315669563362";
 ```
 
 This gives us the clue that the password or the ***secret*** is encoded. To understand
 how its encoded we just need to look a few lines below the variable definition:
 
-```
+```php
 function encodeSecret($secret) {
     return bin2hex(strrev(base64_encode($secret)));
 }
@@ -38,11 +39,14 @@ actions. To do that we can use many different tools. I recommend we use:
 2. Paste the string into the CyberChef ***From Hex*** tab, this gives us the raw text back.
 Now `==QcCtmMml1ViV3b`
 3. Paste the converted back raw text to your bash and run a reversestring command such as: 
-```
+
+```bash
 echo ==QcCtmMml1ViV3b | rev
 ```
+
 4. Paste the converted+reversed data into your bash again and run a base64 decode command:
-```
+
+```bash
 echo b3ViV1lmMmtCcQ== | base64 --decode
 ```
 5. That will give you the ***secret***. Which you need to input in the main website. 
@@ -51,7 +55,7 @@ echo b3ViV1lmMmtCcQ== | base64 --decode
 
 I made a python script called `decoder-script.py` where you can just paste the encoded secret.
 
-```
+```python
 import base64
 
 print('enter the encoded secret:')
