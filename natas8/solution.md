@@ -47,6 +47,10 @@ echo b3ViV1lmMmtCcQ== | base64 --decode
 ```
 5. That will give you the ***secret***. Which you need to input in the main website. 
 
-Correctly following these steps will grant you access into natas9.
+## :boom: Alternitevly
+
+I made a python script called `decoder-script.py` where you can just paste the encoded secret. The output will be in a `b'DECODED SECRET'`format. Make sure to copy it correctly. 
+
+By following these steps will grant you access into natas9.
 
 
