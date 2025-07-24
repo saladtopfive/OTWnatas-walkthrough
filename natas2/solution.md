@@ -6,7 +6,7 @@ When inspecting this page you can find a message that states:
 
 Which is true but have a look at whats below:
 
-```
+```html
 <img src="files/pixel.png">
 ```
 
