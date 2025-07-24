@@ -49,7 +49,20 @@ echo b3ViV1lmMmtCcQ== | base64 --decode
 
 ## :boom: Alternitevly
 
-I made a python script called `decoder-script.py` where you can just paste the encoded secret. The output will be in a `b'DECODED SECRET'`format. Make sure to copy it correctly. 
+I made a python script called `decoder-script.py` where you can just paste the encoded secret. The output will be in a `b'DECODED SECRET'`format. Make sure to copy it correctly:
+
+```
+import base64
+
+print('enter the encoded secret:')
+secret = input()
+secret = bytes.fromhex(secret)
+print(secret)
+secret = secret[::-1]
+secret = base64.decodebytes(secret)
+
+print("decoded secret: ", secret ,"(b' YOUR DECODED SECRET ')")
+```
 
 By following these steps will grant you access into natas9.
 
