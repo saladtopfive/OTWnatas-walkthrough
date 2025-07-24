@@ -35,8 +35,9 @@ This will direct you to a seemingly open site, but you can see that it exactly t
 connected you to this seemingly open site. Which means there has to be something happening,
 no errors, nothing. We inspect the site and in the header we can find: 
 
-> [!NOTE]
+> **_NOTE_**  
 > $secret = 'AAAAAAAAAAAAAAAA' (depending on your playthrough)
+ 
 
 Paste in that phrase and you will be granted access to natas7.
 
