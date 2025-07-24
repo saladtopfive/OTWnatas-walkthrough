@@ -10,7 +10,7 @@ This introduces us to PHP scripting. PHP is a backend scripting
 language we can see that its being used here for the login logic. Its usually implemented
 with `<? ?>` or `<?php ?>`.
 
-```
+```php
 <?
 include "includes/secret.inc";
 
@@ -29,7 +29,9 @@ what exactly is the ***'secret'***? Lets focus on the first line: `include "incl
 This line tells us that there is a file that contains the password (secret) that we need 
 to find. Simply add this `/includes/secret.inc` to the end of the url. Like so:
 
-```http://natas6.natas.labs.overthewire.org/includes/secret.inc```
+```
+http://natas6.natas.labs.overthewire.org/includes/secret.inc
+```
 
 This will direct you to a seemingly open site, but you can see that it exactly that. It 
 connected you to this seemingly open site. Which means there has to be something happening,
