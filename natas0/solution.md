@@ -1,9 +1,10 @@
-# Natas0 walkthrough
+# 🔐 Natas0 walkthrough
 
 In order to complete this level, all you have to do is ***inspect*** the page:
 > right click ->inspect 
 
-### Then navigate to the: 
+### Then navigate to the:
+ 
 ```html
 <div id-:"content">
 ```
