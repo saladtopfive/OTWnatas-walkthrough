@@ -3,7 +3,7 @@
 To complete **Natas 4** of the OverTheWire wargames, we need to understand how **HTTP Referers** work.  
 This particular level restricts access based on the `Referer` header — it must appear as though we're coming from **natas5**, even though we don't have direct access to that level yet.
 
----
+
 
 ## 🧠 The Clue
 
@@ -13,7 +13,7 @@ When you visit the site and refresh the page, you'll see:
 
 This means our current request is coming from the wrong source (natas4), and we need to spoof or change the `Referer` to make it seem like we’re coming from **natas5**.
 
----
+
 
 ## 🛠️  Step-by-Step: Modifying the Referer with `curl`
 
@@ -29,7 +29,7 @@ In your browser:
 
 You’ll see a request to `index.php`.
 
----
+
 
 ### 2. Copy the Request as `curl`
 
@@ -53,7 +53,7 @@ curl 'http://natas4.natas.labs.overthewire.org/index.php' \
   -H 'DNT: 1' \
   -H 'Sec-GPC: 1'
 ```
----
+
 
 ### 3. Change the Referer to point to natas5
 
@@ -70,7 +70,7 @@ To:
 
 >Be sure to remove /index.php - it must be the root path of natas5.
 
----
+
 
 ### 4. Final command
 
