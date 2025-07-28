@@ -1,6 +1,6 @@
 import base64
 
-# Given base64 inputs
+# Given base64 inputs - CHANGE IF DIFFERENT FOLLOW THE GUIDE :)
 plaintext_b64 = "eyJzaG93cGFzc3dvcmQiOiJubyIsImJnY29sb3IiOiIjZmZmZmZmIn0="
 ciphertext_b64 = "HmYkBwozJw4WNyAAFyB1VUcqOE1JZjUIBis7ABdmbU1GIjEJAyIxTRg="
 new_plaintext = '{"showpassword":"yes","bgcolor":"#ffffff"}'
