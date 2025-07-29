@@ -1,7 +1,11 @@
 import base64
 
 # Given base64 inputs - CHANGE IF DIFFERENT FOLLOW THE GUIDE :)
+
+# this is the b64 encoded json format which you can find in the sourcecode (should never change, the format is constant)
 plaintext_b64 = "eyJzaG93cGFzc3dvcmQiOiJubyIsImJnY29sb3IiOiIjZmZmZmZmIn0="
+
+# this is the cookie that you need to copy from the storage tab
 ciphertext_b64 = "HmYkBwozJw4WNyAAFyB1VUcqOE1JZjUIBis7ABdmbU1GIjEJAyIxTRg="
 
 # Decode base64 inputs
@@ -36,4 +40,4 @@ encrypted = xor_encrypt(new_plaintext, key)
 # Step 2
 cookie_value = base64.b64encode(encrypted).decode()
 
-print('\033[1m'+"Encrypted Cookie Value (set this as your 'data' cookie):", cookie_value)
+print('\033[1m' + "Encrypted Cookie Value (set this as your 'data' cookie):", cookie_value)
