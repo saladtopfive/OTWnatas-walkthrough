@@ -1,5 +1,8 @@
 # Natas Walkthrough – OverTheWire Wargame
-## This is not a finished product! Currently being worked on 25.07.2025
+
+>[!NOTE]
+>This is not a finished product! Currently being worked on 25.07.2025
+
 Welcome to my walkthrough repository for the **Natas** wargame on [OverTheWire](https://overthewire.org/wargames/natas/). This repo contains solutions and step-by-step explanations for each level in the Natas series, serving as both a learning tool and a personal reference.
 
 ## 📘 What is Natas?
