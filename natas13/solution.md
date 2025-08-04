@@ -9,12 +9,12 @@ The line that should get your attention:
         echo "File is not an image";
 }
 ```
-It should get your attentions for two reasons. The `echo` content, obviously pointing that its connected to checking the file type. And if you've heard of it `exif_imagetype`.
+It should get your attention for two reasons. Firstly, the `echo` content, obviously pointing that its connected to checking the file type. Secondly, if you've heard of it `exif_imagetype`.
 
 ## What is exif?
 
-We can read from the php documentation. **exif_imagetype() reads the first bytes of an image and checks its signature.** Filetypes have different headers. Thats what this function does. It just checks the first bytes for image headers.
-So, in order to get out `shell.php` file pass we need to give it an image header. Let's look at basic filetype headers:
+We can read from the php documentation. ***exif_imagetype() reads the first bytes of an image and checks its signature.*** File types have different headers. Thats what this function does. It just checks the first bytes for file headers.
+So, in order to get out `shell.php` file pass we need to give it an image header. Let's look at basic file type headers:
 
 | Filetype | Header (ASCII) |
 | -------- | -------------- |
