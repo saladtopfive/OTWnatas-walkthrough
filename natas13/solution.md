@@ -24,7 +24,7 @@ So, in order to get out `shell.php` file pass we need to give it an image header
 
 As we can see alot of the headers translated to ASCII are non-standard characters, this can be a problem so let's pick the one with normal chars - **bmp (bitmap).**
 
-## 🛠️A dding the header to the script
+## 🛠️  Adding the header to the script
 
 Let's take the script from our natas12 solution and add `BM` infront of it, so the `exif` function thinks the file is a **bitmap.**
 ```php
