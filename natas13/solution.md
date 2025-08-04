@@ -11,7 +11,7 @@ The line that should get your attention:
 ```
 It should get your attention for two reasons. Firstly, the `echo` content, obviously pointing that its connected to checking the file type. Secondly, if you've heard of it `exif_imagetype`.
 
-## What is exif?
+## 🧠 What is exif?
 
 We can read from the php documentation. ***exif_imagetype() reads the first bytes of an image and checks its signature.*** File types have different headers. Thats what this function does. It just checks the first bytes for file headers.
 So, in order to get out `shell.php` file pass we need to give it an image header. Let's look at basic file type headers:
@@ -24,7 +24,7 @@ So, in order to get out `shell.php` file pass we need to give it an image header
 
 As we can see alot of the headers translated to ASCII are non-standard characters, this can be a problem so let's pick the one with normal chars - **bmp (bitmap).**
 
-## Adding the header to the script
+## 🛠️A dding the header to the script
 
 Let's take the script from our natas12 solution and add `BM` infront of it, so the `exif` function thinks the file is a **bitmap.**
 ```php
@@ -36,7 +36,7 @@ Now once we selected the file, we still need to change the file extension in the
 <input type="hidden" name="filename" value="<YOUR RANDOM STRING HERE>.jpg">
 ```
 
-***Chagne it to:***
+***Change it to:***
 
 ```html
 <input type="hidden" name="filename" value="<YOUR RANDOM STRING HERE>.php">
@@ -50,7 +50,7 @@ Notice: Undefined index: e in /var/www/natas/natas13/upload/90ie57i74v.php on li
 
 This is practically the same line as in natas12. Only the header is **BM**, as it should be.
 
-## Navigate through the server contents
+## 🔎 Navigate through the server contents
 
 Like in natas12, we need to change the `e` variable as in our script. Let's change the url as before, firstly `?e=ls`:
 ```
