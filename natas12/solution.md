@@ -1,5 +1,8 @@
 # 🔐 Natas 12 Walkthrough 
 
+  >[!IMPORTANT]
+  >📝 The full script with a commented explanation is provided in the `natas12` directory. Feel free to use it while debugging your code. Good luck!
+
 You'll see an upload form that allows uploading an image file. It mentions that it checks the file type.
 
 ```html
@@ -79,6 +82,3 @@ http://natas12.natas.labs.overthewire.org/upload/r3bkauo8pd.php?e=cat%20/etc/nat
 
 If done correctly, you'll be shown the password for **natas13**. 
 
-
->[!IMPORTANT]
->📝 The full script with a commented explanation is provided in the `natas12` directory. Feel free to use it while debugging your code. Good luck!
