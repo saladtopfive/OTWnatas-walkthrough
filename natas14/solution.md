@@ -125,4 +125,4 @@ Which bypasses authentication and logs you in! You should now see the password f
 
 ## Alternitevly 
 
-You can use a dev tool like [Brup Suite](https://learnhacking.io/basic-web-skills-setting-up-burp-suite/) which i will cover in a different file.
+You can use a dev tool like [Brup Suite](https://learnhacking.io/basic-web-skills-setting-up-burp-suite/) which is covered in a different file.
