@@ -73,13 +73,13 @@ http://natas14.natas.labs.overthewire.org/index.php?username=&password=&debug
 
 You’ll see the SQL query being built with the given parameters.
 
-Now try this:
+Now try to put something into the `password` and `username` variables:
 
 ```
 http://natas14.natas.labs.overthewire.org/index.php?username=admin&password=password" OR "1&debug
 ```
 
-This allows you to tweak the input and see how it affects the query. Much easier than typing in the form! Because you can actually see what you're doing.
+You should see your input on the website screen. Making it easier to manipulate the sql injection with `""`.
 
 ## 🐛 The Vulnerable Code
 
