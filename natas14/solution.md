@@ -49,6 +49,28 @@ mysqli_select_db($link, 'natas14');
 ```
 Which indicates that the passwords and usernames are taken from a database.
 
+Also, the code snippet below suggests that there is a debug "mode" which we can easily access to check debug our injection:
+
+```php
+    if(array_key_exists("debug", $_GET)) {
+        echo "Executing query: $query<br>";
+    }
+```
+The following code is an if statement that checks for the `"debug"` parameter in the `HTTP GET` array. 
+So let's try to get to the debug "mode" of the website. It will bascially just print out our inputed username and password, which can help figuring our where the `""` are and if they should be moved to get the password. Let's enter this url:
+
+```
+http://natas14.natas.labs.overthewire.org/index.php?username=&password=&debug
+```
+
+As we enter this url, we can see that indeed we can see what's inputed into the website. It's nothing for now but you can just input your desired password into the url and check how its beging sent as, like so:
+
+```
+http://natas14.natas.labs.overthewire.org/index.php?username=MYUSERNAMEHERE&password=MYPASSWORDHERE1&debug
+```
+
+So instead of putting the `username` and `password` into the login form, do it in the url for a clearer idea what we're doing. Now back to the code.
+
 Here’s the vulnerable part:
 ```php
 $query = "SELECT * from users where username=\"".$_REQUEST["username"]."\" and password=\"".$_REQUEST["password"]."\"";
