@@ -121,3 +121,8 @@ SELECT * FROM users WHERE username = "admin" AND password = "" OR "1";
 ```
 
 Which bypasses authentication and logs you in! You should now see the password for **Natas15**. :}
+
+
+## Alternitevly 
+
+You can use a dev tool like [Brup Suite](https://learnhacking.io/basic-web-skills-setting-up-burp-suite/) which i will cover in a different file.
