@@ -2,7 +2,6 @@
 
 We’re presented with a login form. This hints that **SQL Injection** might be the intended path forward.
 
-
 ## 💡 What is SQL Injection?
 
 SQL Injection is a technique used to manipulate a website’s database through its input fields.
