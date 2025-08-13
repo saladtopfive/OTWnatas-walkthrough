@@ -91,7 +91,10 @@ If it does, the site returns:
 ***This user exists.***
 
 ## 🤖 Automating this process
-So obviously we could just manually put all of the english alphabet both in lowercase and uppercase + digits, this would be, as you can probably tell, very repetetive and would take a long time. So, being the hackers that we are, let's automate the process. (The whole script with thoroughly commented sections is given in `script.py` file.)
+So obviously we could just manually put all of the english alphabet both in lowercase and uppercase + digits, this would be, as you can probably tell, very repetetive and would take a long time. So, being the hackers that we are, let's automate the process.
+
+>[!NOTE]
+>A more polished, visually appealing version of this script is also available in the directory. That version includes styled console output and progress indicators but may run slightly slower due to the added formatting. Use whichever you prefer — this version is optimized for speed.
 
 #### Step 1: Discover valid characters
 ```python
@@ -175,4 +178,4 @@ cefhijkmostuvDEGKLMPQVWXY346
 hPkjKYviLQctEW33QmuXL6eDVfMW4sGo
 ```
 
-And that's it, your natas16 password is right there! (:
+And that's it, your natas16 password is right there! `(:`.
