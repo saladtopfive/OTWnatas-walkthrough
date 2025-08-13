@@ -1,7 +1,7 @@
 # 🔐 Natas 10 Walkthrough
 
 
-The setup is very similar to Natas 9, but this time some characters are filtered to make command injection harder. By viewing the source code [View sourcecode](http://natas10.natas.labs.overthewire.org/index-source.html), we can see exactly what’s being blocked:
+The setup is very similar to Natas 9, but this time some characters are filtered to make command injection harder. By viewing the  [sourcecode](http://natas10.natas.labs.overthewire.org/index-source.html), we can see exactly what’s being blocked:
 
  ```php
 <?
