@@ -1,6 +1,6 @@
 # 🔐 Natas1 Walkthrough
 
-Same thing here, but apperently the right click option will be disabled, however if you
+Same thing here, but apparently the right click option will be disabled, however if you
 just change the url from natas0 -> natas1. Change:
 ```
 http://natas0.natas.labs.overthewire.org/
