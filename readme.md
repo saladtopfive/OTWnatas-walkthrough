@@ -4,7 +4,7 @@
 > These walkthroughs are meant for **educational purposes only**. 
 
 >[!IMPORTANT]
->This is not a finished product! Currently being worked on 25.07.2025
+>This is not a finished product! Currently being worked on 13.08.2025
 
 Welcome to my walkthrough repository for the **Natas** wargame on [OverTheWire](https://overthewire.org/wargames/natas/). This repo contains solutions and step-by-step explanations for each level in the Natas series, serving as both a learning tool and a personal reference.
 
