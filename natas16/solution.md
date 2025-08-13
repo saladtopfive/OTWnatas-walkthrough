@@ -39,7 +39,7 @@ The following characters are **blocked**, so we can’t use them for command inj
 Since `` '/[;|&`\'"]/' `` are forbidden, we can’t directly inject multiple commands. Luckily, the `$()` syntax is allowed, which executes a command inside a subshell. A ***subshell*** is a way to execute a command inside another command in the shell. Whatever the subshell outputs can then be used or appended in the outer command.
 
 <div align="center">
-  <img src="diagram.png" alt="Diagram">
+  <img src="diagram-1.png" alt="Diagram">
 </div>
 
 
