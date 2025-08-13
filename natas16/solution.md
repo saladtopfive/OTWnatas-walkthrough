@@ -20,18 +20,19 @@ if($key != "") {
 }
 ?>
 ```
-## 🚫 Forbidden characters
-- `/`
-- `[]`
-- `;`
-- `|`
-- `&`
-- `'`
-- `"`
-- `\`
-- `backtick`
+## 🚫 Forbidden Characters  
 
-This blocks our previous command injection tricks. **BUT**, notice that `$` is **still allowed!** 💡 That’s our way in.
+The following characters are **blocked**, so we can’t use them for command injection:  
+
+| 1  | 2  | 3  | 4  | 5  | 6  | 7  | 8  | 9  | 10  |
+|----|----|----|----|----|----|----|----|----|-----|
+| `/` | `[` | `]` | `;` | `\|` | `&` | `'` | `"` | `\` | `` ` `` |
+
+
+
+
+**Good news:**  The `$` character is **still allowed**—that’s our way in!  
+
 
  ## 🌀 Subshell
 
