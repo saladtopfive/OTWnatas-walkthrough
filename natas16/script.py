@@ -44,7 +44,7 @@ charData = string.ascii_letters + string.digits
 matchingCharData = ""
 
 # === Step 1: Find valid characters ===
-log_info("Starting Natas16 brute force...")
+log_info("Starting Natas16 password cracker...")
 log_step(f"Testing {len(charData)} possible characters...\n")
 
 for idx, i in enumerate(charData, 1):
