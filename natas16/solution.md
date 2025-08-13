@@ -38,34 +38,33 @@ The following characters are **blocked**, so we can’t use them for command inj
 
 Since `` '/[;|&`\'"]/' `` are forbidden, we can’t directly inject multiple commands. Luckily, the `$()` syntax is allowed, which executes a command inside a subshell. A ***subshell*** is a way to execute a command inside another command in the shell. Whatever the subshell outputs can then be used or appended in the outer command.
 
-<div style="text-align: center;">
-<pre>
-                User Input
-            ------------------
-                "a$(command)b"
-                    |
-                    v
-            PHP passthru() call
-                    |
-                    v
-Shell sees: grep -i "a$(command)b" dictionary.txt
-                    |
-                    v
-        Subshell executes first:
-                $(command)
-                    |
-                    v
-    Output of command replaces $(command)
-                    |
-                    v
-Shell executes final grep command:
-grep -i "a<command_output>b" dictionary.txt
-                    |
-                    v
-            Result returned to user
-</pre>
-</div>
+```shell
+                                        User Input 
+                                    ------------------
+                                      
+                                      "a$(command)b"
+                                            |
+                                            v
+                                    PHP passthru() call
+                                            |
+                                            v
+                        Shell sees: grep -i "a$(command)b" dictionary.txt
+                                            |
+                                            v
+                                Subshell executes first:
+                                        $(command)
+                                            |
+                                            v
+                            Output of command replaces $(command)
+                                            |
+                                            v
+                        Shell executes final grep command:
+                        grep -i "a<command_output>b" dictionary.txt
+                                            |
+                                            v
+                                  Result returned to user
 
+```
 
 ## 🔍 Testing a character
 Input:
