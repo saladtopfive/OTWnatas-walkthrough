@@ -69,7 +69,7 @@ This way, we can test each possible character in the password **without using th
 
 Clearly, the password contains `e` and **doesnt** contain `a`. Now, as before we shall automate this process.
 
->[IMPORTANT!]
+>[!IMPORTANT]
 >We add `squid` at the end of the command solely to avoid printing the entire dictionary. The command itself would work the same without it, but in that case the full dictionary would be displayed, making it harder to analyze the website’s response due to the large number of returned strings.
 ## Python script
 
