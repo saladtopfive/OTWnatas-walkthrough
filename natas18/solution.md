@@ -1,7 +1,7 @@
 # 🔐 Natas18 Walkthrough
 In this level, we're asked to log in as an admin user. When we look at the [view sourcecode]() we quickly see that there isn't an sql injection vunerability like the previous levels. Instead, the vunerability lies in ***session management.***
 
-## What is session management?
+## 🔍 What is session management?
 Http sites are stateless, meaning that each user gets their own session. Here we "simply" need to get access to the admin's session via ***PHPSESSID***. When we log in with arbitrary credentials, the site sets a ***PHPSESSID*** cookie. By experimenting, we can see that: 
 
 - Each login attempt generates a numeric PHPSESSID stored in the storage tab in the developer tools.
@@ -30,7 +30,7 @@ function my_session_start() { /* {{{ */
 
 This means we can brute-forfce possible PHPSESSID values until we find one that belongs to an **admin's** session.
 
-## Attack stategy
+## 🛠️ Attack stategy
 
 The sourcecode hints the maximum value of the ***PHPSESSID***:
 
@@ -43,7 +43,7 @@ $maxid = 640; // 640 should be enough for everyone
 3. Check the response - if it contains `"You are an admin"` - (via the sourcode aswell), then we've found the correct PHPSESSID.
 4. The password for natas19 should be displayed on the page after you connect to an admin's session so we'll extract it from the website automatically too.
 
-## The script
+## 🤖 The script
 
 Here's the script to brute-force the session IDs:
 
