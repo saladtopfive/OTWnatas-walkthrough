@@ -49,7 +49,10 @@ PHPSESSID = 3134392d61646d696e
 ```
 decoding...
 
-![alt text](image-1.png)
+<div align="center">
+<img src="https://raw.githubusercontent.com/saladtopfive/OTWnatas-walkthrough/main/natas19/image-1.png" alt="Cyberchef screenshot">
+</div>
+
 
 ```
 2d61646d696e = -admin
