@@ -26,7 +26,10 @@ PHPSESSID = 33352d74657374
 
 This is clearly a hex number, hence the `d`. Let's decode it using [cyber-chef](https://gchq.github.io/CyberChef/)
 
-![alt text](image.png)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/saladtopfive/OTWnatas-walkthrough/main/natas19/image.png" alt="Cyberchef screenshot 1">
+</p>
+
 
 as you can see, the `username` is in the `PHPSESSID`, naturally we should try inputing `admin` in the username cause that will most likely be the admin's session.
 
@@ -49,9 +52,10 @@ PHPSESSID = 3134392d61646d696e
 ```
 decoding...
 
-<div align="center">
-<img src="https://raw.githubusercontent.com/saladtopfive/OTWnatas-walkthrough/main/natas19/image-1.png" alt="Cyberchef screenshot">
-</div>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/saladtopfive/OTWnatas-walkthrough/main/natas19/image-1.png" alt="Cyberchef screenshot 2">
+</p>
+
 
 
 ```
