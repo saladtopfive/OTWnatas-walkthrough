@@ -6,7 +6,7 @@
 >[!IMPORTANT]
 >This is not a finished product! Currently being worked on 24.09.2025
 
-Welcome to my walkthrough repository for the **Natas** wargame on [OverTheWire](https://overthewire.org/wargames/natas/). This repo contains solutions and step-by-step explanations for each level in the Natas series, serving as both a learning tool and a personal reference.
+Welcome to my walkthrough repository for the [OverTheWire](https://overthewire.org/wargames/natas/) **Natas** wargame. This repo contains solutions and step-by-step explanations for each level in the Natas series, serving as both a learning tool and a personal reference.
 
 ## 📘 What is Natas?
 
@@ -49,4 +49,4 @@ If you're new to Natas:
 ```bash
 git clone https://github.com/saladtopfive/OTWnatas-walkthrough.git
 cd OTWnatas-walkthrough
-
+```
