@@ -1,4 +1,6 @@
 # 🔐 Overthewire Natas Passwords
+> [!IMPORTANT]
+> These passwords change at unspecified intervals, so they may not match the ones you retrieve.
 
 | Level       | Password                          |
 |-------------|---------------------------------|
