@@ -50,3 +50,6 @@ If you're new to Natas:
 git clone https://github.com/saladtopfive/OTWnatas-walkthrough.git
 cd OTWnatas-walkthrough
 ```
+
+## 📜 License
+This project is licensed under the MIT permissive license.
